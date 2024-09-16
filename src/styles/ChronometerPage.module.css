@@ -1,0 +1,74 @@
+.pageComponent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    gap: 20px;
+}
+
+.timerDisplay {
+    font-size: 48px;
+    color: #076071;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.controlButtons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.controlButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.controlButton button {
+    background-color: #f5bb14;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.controlButton span {
+    color: #076071;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.motivationText {
+    font-size: 14px;
+    color: #076071;
+    margin-bottom: 40px;
+    max-width: 300px;
+}
+
+.footerIcons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.footerIcon {
+    font-size: 24px;
+    cursor: pointer;
+    color: #076071;
+}

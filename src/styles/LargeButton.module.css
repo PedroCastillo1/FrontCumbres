@@ -1,0 +1,25 @@
+.largeButton {
+    cursor: pointer;
+    width: 100%;
+    height: 60px;
+    padding: 0px 20px;
+    border: 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #bfc6f4;
+    color: black;
+    font-size: 18px;
+    font-family: 'Urbanist', sans-serif;
+    line-height: 20px;
+    outline: none;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.largeButton:hover {
+    background-color: #72A1E8;
+}
+
+.largeButton:active {
+    background-color: #3A6FAF;
+}

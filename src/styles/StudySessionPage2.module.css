@@ -1,0 +1,85 @@
+.pageComponent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    background-color: #e7fbbc;
+    font-family: "Urbanist", sans-serif;
+    color: black;
+    padding: 20px;
+    text-align: center;
+}
+
+.backArrow {
+    font-size: 20px;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.timeSettings {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.timeItem {
+    padding: 10px;
+    background-color: #CBD2FF;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Urbanist', sans-serif;
+    color: #000000;
+    gap: 10px;
+}
+
+.timeDisplay {
+    background-color: #D6D7FF;
+    padding: 5px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100px;
+}
+
+.timeInput {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px;
+    margin: 0 5px;
+}
+
+.blockInput {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.startButton {
+    margin-top: 30px;
+    background-color: #CBD2FF;
+    color: #000000;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.startButton:hover {
+    background-color: #A5B9FF;
+}

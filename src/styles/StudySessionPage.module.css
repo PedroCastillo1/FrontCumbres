@@ -1,0 +1,66 @@
+.pageComponent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    background-color: #e7fbbc;
+    font-family: "Urbanist", sans-serif;
+    color: black;
+    padding: 20px;
+    gap: 20px;
+    padding-top: 40px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.backArrow {
+    align-self: flex-start;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.progressText {
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.objectiveList {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.objectiveItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.date {
+    font-size: 14px;
+    color: #8c8c8c;
+}
+
+.input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}

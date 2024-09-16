@@ -1,0 +1,88 @@
+.pageComponent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-image: url('../resources/background.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Para que el logo y la hamburguesa estén bien separados */
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #000000;
+}
+
+.header span {
+    font-family: "Urbanist", sans-serif;
+    font-size: 20px;
+    color: #000000;
+    margin-left: 20px;
+}
+
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10;
+    margin-right: 20px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #000000;
+    font-family: 'Urbanist', sans-serif;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.menu {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #ffffff;
+    border: 1px solid #00796b;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.menu a {
+    color: #00796b;
+    text-decoration: none;
+    padding: 10px;
+    border-bottom: 1px solid #00796b;
+}
+
+.menu a:last-child {
+    border-bottom: none;
+}
+
+.bigText {
+    color: #333333;
+    font-size: 36px;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 600;
+    text-align: left;
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
