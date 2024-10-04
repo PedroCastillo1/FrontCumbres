@@ -1,42 +1,42 @@
 .pageComponent {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
+    justify-content: center;
+    align-items: center;
     height: 100vh;
     padding: 20px;
-    background-color: #E9FBC9; /* Fondo verde claro */
+    background-color: #E9FBC9;
 }
 
 .header {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center header content horizontally */
+    align-items: center;
     width: 100%;
-    margin-bottom: 20px; /* Add some space below the header */
+    margin-bottom: 20px;
 }
 
 .icon {
-    width: 50px; /* Adjusted size for better visibility */
+    width: 50px;
     height: auto;
-    margin-bottom: 10px; /* Reduced margin for closer spacing */
+    margin-bottom: 10px;
 }
 
 .title {
-    font-size: 24px; /* Increased font size for better readability */
-    font-family: 'Urbanist', sans-serif;
-    color: #333333; /* Darker color for better legibility */
+    font-size: 24px;
+    font-family: 'Sora', sans-serif;
+    color: #333333;
     font-weight: 700;
     margin-bottom: 10px;
-    text-align: center; /* Center text */
+    text-align: center;
 }
 
 .subtitle {
     font-size: 14px;
     color: #000000;
-    font-family: 'Urbanist', sans-serif;
-    margin-bottom: 10px; /* Reduced margin for closer spacing */
-    text-align: center; /* Center text */
+    font-family: 'Sora', sans-serif;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .textArea {
@@ -45,17 +45,18 @@
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #C4C4C4;
+    color: #000000;
     font-size: 14px;
-    font-family: 'Urbanist', sans-serif;
-    margin-bottom: 10px; /* Reduced margin for closer spacing */
+    font-family: 'Sora', sans-serif;
+    margin-bottom: 10px;
     resize: none;
 }
 
 .saveButton {
-    background-color: #CBD2FF; /* Color del botón */
-    color: #ffffff;
+    background-color: #CBD2FF;
+    color: #000000;
     font-size: 16px;
-    font-family: 'Urbanist', sans-serif;
+    font-family: 'Sora', sans-serif;
     font-weight: 600;
     padding: 10px 20px;
     border: none;
@@ -65,5 +66,5 @@
 }
 
 .saveButton:hover {
-    background-color: #A5B9FF; /* Hover del botón */
+    background-color: #A5B9FF;
 }

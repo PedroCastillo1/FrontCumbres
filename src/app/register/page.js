@@ -31,14 +31,20 @@ const RegisterPage = () => {
             return;
         }
 
-        axios.post('http://localhost:8080/api/v1/auth/register', {
-            name: inputName,
+        const userData = {
             email: inputEmail,
+            name: inputName,
             password: inputPassword
-        })
+        };
+
+        axios.post('http://localhost:8080/api/v1/auth/register', userData)
             .then((response) => {
                 console.log(response.data);
                 toast.success("Registro exitoso.");
+                const token = response.data.token;
+                localStorage.setItem('jwtToken', token);
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                window.location.href = "/motivation";
             })
             .catch((error) => {
                 console.log(error);
@@ -55,8 +61,8 @@ const RegisterPage = () => {
             </div>
             <div className={styles.formContainer}>
                 <div className={styles.inputComponent}>
-                    <p className={styles.normalText}>Nombre completo</p>
-                    <InputField value={inputName} onChange={(e) => setInputName(e.target.value)} />
+                    <p className={styles.normalText}>Nombre</p>
+                    <InputField value={inputName} onChange={(e) => setInputName(e.target.value)} maxLength={12} />
                 </div>
                 <div className={styles.inputComponent}>
                     <p className={styles.normalText}>Mail</p>

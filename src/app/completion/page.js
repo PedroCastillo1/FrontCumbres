@@ -1,6 +1,8 @@
-"use client";
+'use client';
 import React, { useState } from "react";
+import axios from 'axios';
 import styles from '@/styles/CompletionPage.module.css';
+import LargeButton from '@/components/LargeButton';
 
 const CompletionPage = () => {
     const [selectedOptions, setSelectedOptions] = useState([]);
@@ -14,12 +16,39 @@ const CompletionPage = () => {
         );
     };
 
+    const handleSubmit = () => {
+        const optionsWithValues = selectedOptions.map(option => {
+            switch (option) {
+                case 'option1':
+                    return { option, value: 10 };
+                case 'option2':
+                    return { option, value: 20 };
+                case 'option3':
+                    return { option, value: 30 };
+                case 'option4':
+                    return { option, value: 40 };
+                default:
+                    return { option, value: 0 };
+            }
+        });
+
+        axios.post('https://api.anteriorrepositorio.com/updateAccumulators', {
+            selectedOptions: optionsWithValues
+        })
+            .then(response => {
+                console.log('Success:', response.data);
+                window.location.href = '/home';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    };
+
     return (
         <div className={styles.pageComponent}>
             <h2 className={styles.title}>
-                Antes de terminar... <span className={styles.emoji}>🏔️</span>
+                Antes de terminar, ¿qué rescatás de esta sesión de estudio? <span className={styles.emoji}>❤️</span>
             </h2>
-            <p className={styles.subtitle}>¿Qué rescatás de este ascenso?</p>
 
             <div className={styles.checkboxContainer}>
                 <label className={styles.checkboxLabel}>
@@ -31,7 +60,7 @@ const CompletionPage = () => {
                         onChange={handleOptionChange}
                         className={styles.checkbox}
                     />
-                    Avancé en mis objetivos
+                    Me organicé de manera efectiva 📋
                 </label>
             </div>
             <div className={styles.checkboxContainer}>
@@ -44,7 +73,7 @@ const CompletionPage = () => {
                         onChange={handleOptionChange}
                         className={styles.checkbox}
                     />
-                    Me organicé de manera efectiva.
+                    Logré enfocarme 📌
                 </label>
             </div>
             <div className={styles.checkboxContainer}>
@@ -57,7 +86,7 @@ const CompletionPage = () => {
                         onChange={handleOptionChange}
                         className={styles.checkbox}
                     />
-                    Me mantuve enfocado/a durante la sesión.
+                    Aprendí algo nuevo 🎁
                 </label>
             </div>
             <div className={styles.checkboxContainer}>
@@ -70,11 +99,13 @@ const CompletionPage = () => {
                         onChange={handleOptionChange}
                         className={styles.checkbox}
                     />
-                    Aprendí algo nuevo.
+                    Mantuve la motivación 💪
                 </label>
             </div>
 
-            <button className={styles.finishButton}>Finalizar</button>
+            <div className={styles.buttonContainer}>
+                <LargeButton label="Finalizar" onClick={handleSubmit} />
+            </div>
         </div>
     );
 };

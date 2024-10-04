@@ -30,9 +30,11 @@ const LoginPage = () => {
             password: inputPassword
         })
             .then((response) => {
-                console.log(response.data);
+                const token = response.data.token;
+                localStorage.setItem('jwtToken', token);
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
                 toast.success("Login exitoso.");
-                //router.push('/home');
+                window.location.href = "/home";
             })
             .catch((error) => {
                 console.log(error);

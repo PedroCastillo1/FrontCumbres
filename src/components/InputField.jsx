@@ -21,10 +21,11 @@ const defaultProps = {
     text: '',
     value: '',
     onChange: () => {},
+    maxLength: 255,
 };
 
 const InputField = (props) => {
-    const { text, value, onChange } = { ...defaultProps, ...props };
+    const { text, value, onChange, maxLength } = { ...defaultProps, ...props };
 
     return (
         <input
@@ -32,6 +33,7 @@ const InputField = (props) => {
             placeholder={text}
             value={value}
             onChange={onChange}
+            maxLength={maxLength}
         />
     );
 };

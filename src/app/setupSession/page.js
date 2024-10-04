@@ -1,16 +1,39 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from '@/styles/StudySessionPage.module.css';
 import LargeButton from '@/components/LargeButton';
 
 const StudySessionPage = () => {
-    const predefinedObjectives = [
-        { id: 1, name: 'Integradora de Química', date: '2024-09-24' },
-        { id: 2, name: 'Tarea de Geografía', date: '2024-09-26' },
-        { id: 3, name: 'Oral de Literatura', date: '2024-09-27' }
-    ];
-
+    const [objectives, setObjectives] = useState([]);
     const [selectedObjectives, setSelectedObjectives] = useState([]);
+
+    useEffect(() => {
+        const fetchObjectives = async () => {
+            try {
+                const token = localStorage.getItem('jwtToken');
+                if (!token) {
+                    toast.error('Authorization token not found');
+                    return;
+                }
+
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+                const response = await axios.get('http://localhost:8080/objective/getAll', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                setObjectives(response.data);
+            } catch (error) {
+                toast.error('Error fetching objectives');
+            }
+        };
+
+        fetchObjectives();
+    }, []);
 
     const toggleObjective = (objective) => {
         if (selectedObjectives.some(obj => obj.id === objective.id)) {
@@ -20,8 +43,19 @@ const StudySessionPage = () => {
         }
     };
 
+    const handleNext = () => {
+        if (selectedObjectives.length === 0) {
+            toast.error('Please select at least one objective');
+            return;
+        }
+
+        localStorage.setItem('selectedObjectives', JSON.stringify(selectedObjectives));
+        window.location.href = "/setupSession2"; // Redirigir a la segunda parte del formulario
+    };
+
     return (
         <div className={styles.pageComponent}>
+            <ToastContainer />
             <div className={styles.header}>
                 <span className={styles.backArrow}>←</span>
                 <h2 className={styles.progressText}>
@@ -30,7 +64,7 @@ const StudySessionPage = () => {
             </div>
 
             <div className={styles.objectiveList}>
-                {predefinedObjectives.map((objective) => (
+                {objectives.map((objective) => (
                     <label key={objective.id} className={styles.objectiveItem}>
                         <input
                             type="checkbox"
@@ -38,12 +72,12 @@ const StudySessionPage = () => {
                             onChange={() => toggleObjective(objective)}
                         />
                         <span>{objective.name}</span>
-                        <span className={styles.date}>{objective.date}</span>
+                        <span className={styles.date}>{objective.expirationDate}</span>
                     </label>
                 ))}
             </div>
 
-            <LargeButton label="Siguiente" onClick={() => console.log('Objetivos seleccionados:', selectedObjectives)} />
+            <LargeButton label="Siguiente" onClick={handleNext} />
         </div>
     );
 };

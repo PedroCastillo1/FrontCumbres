@@ -1,11 +1,23 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import styles from '@/styles/ChronometerPage.module.css';
 
 const StudySessionTimer = () => {
     const [isPaused, setIsPaused] = useState(true);
-    const [time, setTime] = useState(40 * 60);
+    const [time, setTime] = useState(0);
+    const [objectives, setObjectives] = useState([]);
+
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const minutes = parseInt(urlParams.get('minutes'), 10) || 0;
+        const seconds = parseInt(urlParams.get('seconds'), 10) || 0;
+        const initialTime = minutes * 60 + seconds;
+        setTime(initialTime);
+
+        const selectedObjectives = JSON.parse(localStorage.getItem('selectedObjectives')) || [];
+        setObjectives(selectedObjectives.map(obj => obj.name));
+    }, []);
 
     useEffect(() => {
         let timer;
@@ -13,6 +25,8 @@ const StudySessionTimer = () => {
             timer = setInterval(() => {
                 setTime(prevTime => prevTime - 1);
             }, 1000);
+        } else if (time === 0 && !isPaused) {
+            window.location.href = '/checkOut';
         }
         return () => clearInterval(timer);
     }, [isPaused, time]);
@@ -23,7 +37,8 @@ const StudySessionTimer = () => {
 
     const handleReset = () => {
         setIsPaused(true);
-        setTime(40 * 60);
+        setTime(0);
+        window.location.href = '/checkOut';
     };
 
     const formatTime = (time) => {
@@ -36,33 +51,30 @@ const StudySessionTimer = () => {
 
     return (
         <div className={styles.pageComponent}>
+            <div className={styles.motivationText}>
+                🌱 Me motiva expandir mis horizontes y ser una mejor versión de mí misma.
+            </div>
+
             <div className={styles.timerDisplay}>
                 {formatTime(time)}
             </div>
+
             <div className={styles.controlButtons}>
-                <div className={styles.controlButton}>
-                    <button onClick={handleReset}>
-                        &#8635;
-                    </button>
-                    <span>Reset</span>
-                </div>
-                <div className={styles.controlButton}>
-                    <button onClick={handlePause}>
-                        {isPaused ? '▶' : '❚❚'}
-                    </button>
-                    <span>{isPaused ? 'Reanudar' : 'Pausar'}</span>
-                </div>
+                <button className={styles.controlButton} onClick={handleReset}>
+                    Terminar
+                </button>
+                <button className={styles.controlButton} onClick={handlePause}>
+                    {isPaused ? '▶' : '❚❚'}
+                </button>
             </div>
-            <div className={styles.motivationText}>
-                "Tu Norte aquí"
-            </div>
-            <div className={styles.footerIcons}>
-                <div className={styles.footerIcon}>
-                    &#9200;
-                </div>
-                <div className={styles.footerIcon}>
-                    &#9835;
-                </div>
+
+            <div className={styles.objectives}>
+                🎯 <strong>Objetivos:</strong>
+                <ul>
+                    {objectives.map((obj, index) => (
+                        <li key={index}>{obj}</li>
+                    ))}
+                </ul>
             </div>
         </div>
     );

@@ -4,15 +4,23 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #ffffff;
+    background-color: #e7fbbc; /* Color de fondo verde claro */
     padding: 20px;
     text-align: center;
     gap: 20px;
 }
 
+.motivationText {
+    font-size: 16px;
+    font-style: italic;
+    color: #076071;
+    margin-bottom: 20px;
+    max-width: 300px;
+}
+
 .timerDisplay {
     font-size: 48px;
-    color: #076071;
+    color: #000000;
     font-weight: bold;
     margin-bottom: 20px;
 }
@@ -25,50 +33,32 @@
 }
 
 .controlButton {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-}
-
-.controlButton button {
-    background-color: #f5bb14;
+    background-color:#a8a6f6;
     border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 24px;
-    color: #ffffff;
-}
-
-.controlButton span {
-    color: #076071;
-    font-size: 14px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
     font-weight: bold;
-}
-
-.motivationText {
-    font-size: 14px;
-    color: #076071;
-    margin-bottom: 40px;
-    max-width: 300px;
-}
-
-.footerIcons {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-}
-
-.footerIcon {
-    font-size: 24px;
+    color: black;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.controlButton:hover {
+    background-color: #a8a6f6;
+}
+
+.objectives {
+    font-size: 16px;
     color: #076071;
+    margin-top: 30px;
+}
+
+.objectives ul {
+    list-style: none;
+    padding: 0;
+}
+
+.objectives li {
+    margin: 5px 0;
 }

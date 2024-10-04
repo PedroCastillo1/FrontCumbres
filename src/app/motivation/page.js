@@ -1,20 +1,32 @@
 "use client";
 
 import React, { useState } from 'react';
+import axios from 'axios';
 import styles from '@/styles/MotivationPage.module.css';
+import logo from '@/resources/logo.png';
 
 const MotivationPage = () => {
     const [motivation, setMotivation] = useState("");
 
-    const handleSave = () => {
-        // Aquí puedes manejar el evento de guardar la motivación
-        console.log("Motivación guardada:", motivation);
+    const handleSave = async () => {
+        try {
+            const token = localStorage.getItem('jwtToken');
+            const response = await axios.put(`http://localhost:8080/user/updateMotivation/${motivation}`, {}, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            console.log("Motivación guardada:", response.data);
+            window.location.href = "/home";
+        } catch (error) {
+            console.error("Error al guardar la motivación:", error);
+        }
     };
 
     return (
         <div className={styles.pageComponent}>
             <div className={styles.header}>
-                <img src="/mountain-icon.png" alt="Mountain Icon" className={styles.icon} />
+                <img src={logo} alt="Logo" className={styles.icon} />
                 <h1 className={styles.title}>
                     Saber qué te motiva es clave para llegar a la cumbre
                 </h1>

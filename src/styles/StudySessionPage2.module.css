@@ -5,7 +5,7 @@
     justify-content: flex-start;
     height: 100vh;
     background-color: #e7fbbc;
-    font-family: "Urbanist", sans-serif;
+    font-family: 'Sora', sans-serif;
     color: black;
     padding: 20px;
     text-align: center;
@@ -39,7 +39,7 @@
     background-color: #CBD2FF;
     border-radius: 8px;
     font-size: 16px;
-    font-family: 'Urbanist', sans-serif;
+    font-family: 'Sora', sans-serif;
     color: #000000;
     gap: 10px;
 }

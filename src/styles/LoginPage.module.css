@@ -52,7 +52,7 @@
 .normalText {
     color: #000000;
     font-size: 14px;
-    font-family: "Urbanist", sans-serif;
+    font-family: 'Sora', sans-serif;
     font-weight: 600;
     margin-bottom: 8px;
 }
@@ -81,7 +81,7 @@
 .checkboxContainer label {
     font-size: 14px;
     color: #000000;
-    font-family: "Urbanist", sans-serif;
+    font-family: 'Sora', sans-serif;
 }
 
 .buttonContainer {

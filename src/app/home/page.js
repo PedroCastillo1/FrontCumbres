@@ -1,11 +1,39 @@
+// src/app/home/page.js
 'use client';
 
-import React, { useState } from "react";
-import styles from "@/styles/HomePage.module.css";
-import LargeButton from "@/components/LargeButton";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import styles from '@/styles/HomePage.module.css';
+import LargeButton from '@/components/LargeButton';
 
 const HomePage = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [username, setUsername] = useState('');
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const token = localStorage.getItem('jwtToken');
+                if (!token) {
+                    console.error('Authorization token not found');
+                    return;
+                }
+
+                axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+                const response = await axios.get('http://localhost:8080/user/me', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                setUsername(response.data.name);
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -19,6 +47,18 @@ const HomePage = () => {
         window.location.href = "/objectives";
     };
 
+    const goToProfile = () => {
+        window.location.href = "/profile";
+    };
+
+    const goToMotivation = () => {
+        window.location.href = "/motivation";
+    };
+
+    const goToStatistics = () => {
+        window.location.href = "/statistics";
+    };
+
     return (
         <div className={styles.pageComponent}>
             <div className={styles.header}>
@@ -27,7 +67,16 @@ const HomePage = () => {
                 </div>
                 <span>Cumbre</span>
             </div>
-            <p className={styles.bigText}>¡Hola, Fer!</p>
+            {menuOpen && (
+                <div className={styles.menu}>
+                    <ul>
+                        <li onClick={goToProfile}>Mi Perfil</li>
+                        <li onClick={goToMotivation}>Mi Motivación</li>
+                        <li onClick={goToStatistics}>Mis Estadísticas</li>
+                    </ul>
+                </div>
+            )}
+            <p className={styles.bigText}>¡Hola, {username}!</p>
             <p className={styles.subtitle}>¿Qué querés hacer hoy?</p>
             <div className={styles.buttonContainer}>
                 <LargeButton label="Agendar nuevos exámenes y tareas 📅" onClick={objectivesPage} />
