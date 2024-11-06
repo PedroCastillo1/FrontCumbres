@@ -50,32 +50,44 @@ const StudySessionPage = () => {
         }
 
         localStorage.setItem('selectedObjectives', JSON.stringify(selectedObjectives));
-        window.location.href = "/setupSession2"; // Redirigir a la segunda parte del formulario
+        window.location.href = "/setupSession2";
+    };
+
+    const handleBack = () => {
+        window.location.href = "/home";
+    };
+
+    const handleAddObjective = () => {
+        window.location.href = "/objectives";
     };
 
     return (
         <div className={styles.pageComponent}>
             <ToastContainer />
             <div className={styles.header}>
-                <span className={styles.backArrow}>←</span>
+                <span className={styles.backArrow} onClick={handleBack}>←</span>
                 <h2 className={styles.progressText}>
                     Primero, definí cuáles van a ser los objetivos de tu sesión 🎯
                 </h2>
             </div>
 
-            <div className={styles.objectiveList}>
-                {objectives.map((objective) => (
-                    <label key={objective.id} className={styles.objectiveItem}>
-                        <input
-                            type="checkbox"
-                            checked={selectedObjectives.some(obj => obj.id === objective.id)}
-                            onChange={() => toggleObjective(objective)}
-                        />
-                        <span>{objective.name}</span>
-                        <span className={styles.date}>{objective.expirationDate}</span>
-                    </label>
-                ))}
-            </div>
+            {objectives.length === 0 ? (
+                <LargeButton label="Agregar nuevo objetivo" onClick={handleAddObjective} />
+            ) : (
+                <div className={styles.objectiveList}>
+                    {objectives.map((objective) => (
+                        <label key={objective.id} className={styles.objectiveItem}>
+                            <input
+                                type="checkbox"
+                                checked={selectedObjectives.some(obj => obj.id === objective.id)}
+                                onChange={() => toggleObjective(objective)}
+                            />
+                            <span>{objective.name}</span>
+                            <span className={styles.date}>{objective.expirationDate}</span>
+                        </label>
+                    ))}
+                </div>
+            )}
 
             <LargeButton label="Siguiente" onClick={handleNext} />
         </div>

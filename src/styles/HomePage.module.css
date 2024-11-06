@@ -13,7 +13,7 @@
 .header {
     width: 100%;
     display: flex;
-    justify-content: space-between; /* Para que el logo y la hamburguesa estén bien separados */
+    justify-content: space-between;
     padding: 10px;
     position: absolute;
     top: 0;
@@ -46,8 +46,8 @@
 
 .menu {
     position: absolute;
-    top: 40px;
-    right: 20px;
+    top: 50px;
+    left: 20px;
     background-color: #ffffff;
     border: 1px solid #00796b;
     color: black;

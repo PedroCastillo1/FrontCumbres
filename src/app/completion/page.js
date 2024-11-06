@@ -17,27 +17,28 @@ const CompletionPage = () => {
     };
 
     const handleSubmit = () => {
-        const optionsWithValues = selectedOptions.map(option => {
-            switch (option) {
-                case 'option1':
-                    return { option, value: 10 };
-                case 'option2':
-                    return { option, value: 20 };
-                case 'option3':
-                    return { option, value: 30 };
-                case 'option4':
-                    return { option, value: 40 };
-                default:
-                    return { option, value: 0 };
-            }
-        });
+        const stats = {
+            organization: selectedOptions.includes('option1') ? 1 : 0,
+            concentration: selectedOptions.includes('option2') ? 1 : 0,
+            learning: selectedOptions.includes('option3') ? 1 : 0,
+            motivated: selectedOptions.includes('option4') ? 1 : 0,
+        };
 
-        axios.post('https://api.anteriorrepositorio.com/updateAccumulators', {
-            selectedOptions: optionsWithValues
+        const token = localStorage.getItem('jwtToken');
+        if (!token) {
+            console.error('Authorization token not found');
+            return;
+        }
+
+        axios.post('http://localhost:8080/user/updateStats', stats, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
         })
             .then(response => {
                 console.log('Success:', response.data);
-                window.location.href = '/home';
+                window.location.href = `/home?token=${token}`;
             })
             .catch(error => {
                 console.error('Error:', error);

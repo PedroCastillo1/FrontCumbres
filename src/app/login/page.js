@@ -47,11 +47,11 @@ const LoginPage = () => {
             <ToastContainer />
             <div className={styles.header}>
                 <div className={styles.logo}></div>
-                <h1 className={styles.title}>Inicio de Sesión</h1>
+                <h1 className={styles.title}>Iniciar sesión</h1>
             </div>
             <div className={styles.formContainer}>
                 <div className={styles.inputComponent}>
-                    <p className={styles.normalText}>Mail institucional</p>
+                    <p className={styles.normalText}>Mail</p>
                     <InputField value={inputEmail} onChange={(e) => setInputEmail(e.target.value)} />
                 </div>
                 <div className={styles.inputComponent}>

@@ -28,9 +28,14 @@
     align-items: center;
 }
 
-.logo img {
-    width: 80px;
-    height: 80px;
+.logo {
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    background-image: url('../resources/montana.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .h1 {

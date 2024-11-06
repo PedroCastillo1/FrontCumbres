@@ -55,10 +55,6 @@ const HomePage = () => {
         window.location.href = "/motivation";
     };
 
-    const goToStatistics = () => {
-        window.location.href = "/statistics";
-    };
-
     return (
         <div className={styles.pageComponent}>
             <div className={styles.header}>
@@ -70,9 +66,8 @@ const HomePage = () => {
             {menuOpen && (
                 <div className={styles.menu}>
                     <ul>
-                        <li onClick={goToProfile}>Mi Perfil</li>
-                        <li onClick={goToMotivation}>Mi Motivación</li>
-                        <li onClick={goToStatistics}>Mis Estadísticas</li>
+                        <li onClick={goToProfile}>Mi perfil</li>
+                        <li onClick={goToMotivation}>Mi motivación</li>
                     </ul>
                 </div>
             )}

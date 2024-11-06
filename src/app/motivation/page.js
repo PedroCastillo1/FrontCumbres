@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import styles from '@/styles/MotivationPage.module.css';
-import logo from '@/resources/logo.png';
 
 const MotivationPage = () => {
     const [motivation, setMotivation] = useState("");
@@ -26,13 +25,13 @@ const MotivationPage = () => {
     return (
         <div className={styles.pageComponent}>
             <div className={styles.header}>
-                <img src={logo} alt="Logo" className={styles.icon} />
+                <div className={styles.logo}></div>
                 <h1 className={styles.title}>
                     Saber qué te motiva es clave para llegar a la cumbre
                 </h1>
                 <p className={styles.subtitle}>
                     En este espacio, te invitamos a que respondas: <br />
-                    ¿Cuál es tu motivación más profunda para aprender? <span role="img" aria-label="light bulb emoji">💡</span>
+                    ¿cuál es tu motivación más profunda para aprender? <span role="img" aria-label="light bulb emoji">💡</span>
                 </p>
             </div>
             <div>

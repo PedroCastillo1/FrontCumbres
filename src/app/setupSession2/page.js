@@ -49,16 +49,20 @@ const StudySessionPage = () => {
         }
     };
 
+    const handleBack = () => {
+        window.location.href = "/setupSession";
+    };
+
     return (
         <div className={styles.pageComponent}>
             <ToastContainer />
-            <span className={styles.backArrow}>&larr;</span>
+            <span className={styles.backArrow} onClick={handleBack}>&larr;</span>
             <h2 className={styles.title}>
-                Ahora, decidí cuánto querés que duren tus bloques de estudio y tus recreos <span role="img" aria-label="clock emoji">⏲️</span>
+                Ahora, decidí cuánto querés que dure tu bloque de estudio <span role="img" aria-label="clock emoji">⏲️</span>
             </h2>
             <div className={styles.timeSettings}>
                 <div className={styles.timeItem}>
-                    <span>Duración de los bloques de estudio</span>
+                    <span>Duración de tu bloque de estudio</span>
                     <div>
                         <input
                             type="number"

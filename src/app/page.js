@@ -8,16 +8,14 @@ function App() {
         <div className={styles.pageComponent}>
             <div className={styles.welcomeHeader}>
                 <div className={styles.logoContainer}>
-                    <div className={styles.logo}>
-                        <img src="https://img.icons8.com/ios/452/mountain.png" alt="logo" />
-                    </div>
+                    <div className={styles.logo}></div>
                     <h1 className={styles.h1}>Cumbre</h1>
                     <p className={styles.p}>Explorá la aventura de aprender</p>
                 </div>
             </div>
             <div className={styles.welcomeButtons}>
-                <LargeButton label="Iniciar sesión" onClick={() => alert('Iniciar sesión')} />
-                <LargeButton label="Registrarse" onClick={() => alert('Registrarse')} />
+                <LargeButton label="Iniciar sesión" onClick={() => window.location.href = '/login'} />
+                <LargeButton label="Registrarse" onClick={() => window.location.href = '/register'} />
             </div>
         </div>
     );

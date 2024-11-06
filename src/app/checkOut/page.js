@@ -38,7 +38,7 @@ const CheckOutPage = () => {
             <div className={styles.header}>
                 <button className={styles.backButton}>&#8592;</button>
                 <p className={styles.title}>
-                    ¡Llegaste al final de la sesión! Marcá los objetivos en los que avanzaste hoy <span className={styles.flag}>🚩</span>
+                    ¡Llegaste al final de la sesión! Marcá los objetivos que cumpliste hoy <span className={styles.flag}>🚩</span>
                 </p>
             </div>
 
